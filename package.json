@@ -1,0 +1,33 @@
+{
+  "name": "@crcarrick/eslint-config",
+  "version": "1.0.0",
+  "description": "An eslint config",
+  "repository": "https://github.com/crcarrick/eslint-config.git",
+  "author": {
+    "name": "Chris Carrick",
+    "email": "chris@crcarrick.dev"
+  },
+  "keywords": [
+    "eslint",
+    "eslintconfig"
+  ],
+  "main": "index.js",
+  "devDependencies": {
+    "@eslint-community/eslint-plugin-eslint-comments": "^4.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0"
+  },
+  "peerDependencies": {
+    "@eslint-community/eslint-plugin-eslint-comments": "^4.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0"
+  }
+}
