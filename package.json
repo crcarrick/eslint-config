@@ -1,6 +1,6 @@
 {
   "name": "@crcarrick/eslint-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An eslint config",
   "repository": "https://github.com/crcarrick/eslint-config.git",
   "author": {
