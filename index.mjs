@@ -2,7 +2,6 @@
 
 /**
  * @typedef {import('eslint').Linter.FlatConfig} FlatConfig
- * @typedef {import('eslint').Linter.RuleEntry} RuleEntry
  * @typedef {import('eslint').Linter.RulesRecord} RulesRecord
  */
 
@@ -12,12 +11,13 @@ import jslint from '@eslint/js'
 import tslint from 'typescript-eslint'
 import reactPlugin from 'eslint-plugin-react'
 import hooksPlugin from 'eslint-plugin-react-hooks'
-import perfectPlugin from 'eslint-plugin-perfectionist'
+import perfectPlugin from 'eslint-plugin-perfectionist/configs/recommended-alphabetical'
 
 const compat = new FlatCompat()
 
 /** @type {FlatConfig[]} */
 const plugins = [
+  // @ts-ignore
   perfectPlugin,
   ...compat.config(reactPlugin.configs.recommended),
   // @ts-ignore
@@ -40,7 +40,6 @@ const tsRules = {
     },
   ],
   '@typescript-eslint/no-explicit-any': 'off',
-  '@typescript-eslint/semi': 'off',
   '@typescript-eslint/no-unused-vars': [
     'error',
     {
@@ -51,6 +50,7 @@ const tsRules = {
       destructuredArrayIgnorePattern: '^_',
     },
   ],
+  '@typescript-eslint/semi': 'off',
 }
 
 /** @type {RulesRecord}*/
@@ -59,32 +59,21 @@ const reactRules = {
   'react/react-in-jsx-scope': 'off',
 }
 
-/** @type {RuleEntry} */
-const lineLength = ['error', { type: 'line-length', order: 'desc' }]
-/** @type {RuleEntry} */
-const alphabetize = ['error', { type: 'alphabetize', order: 'asc' }]
-
 /** @type {RulesRecord} */
 const perfectRules = {
-  'perfectionist/sort-maps': lineLength,
-  'perfectionist/sort-enums': lineLength,
-  'perfectionist/sort-classes': lineLength,
-  'perfectionist/sort-exports': alphabetize,
-  'perfectionist/sort-objects': lineLength,
-  'perfectionist/sort-jsx-props': lineLength,
-  'perfectionist/sort-interfaces': lineLength,
-  'perfectionist/sort-union-types': lineLength,
-  'perfectionist/sort-object-types': lineLength,
-  'perfectionist/sort-named-exports': alphabetize,
-  'perfectionist/sort-named-imports': alphabetize,
-  'perfectionist/sort-array-includes': lineLength,
-  'perfectionist/sort-intersection-types': lineLength,
+  'perfectionist/sort-maps': ['error', { type: 'line-length' }],
+  'perfectionist/sort-enums': ['error', { type: 'line-length' }],
+  'perfectionist/sort-classes': ['error', { type: 'line-length' }],
+  'perfectionist/sort-objects': ['error', { type: 'line-length' }],
+  'perfectionist/sort-jsx-props': ['error', { type: 'line-length' }],
+  'perfectionist/sort-interfaces': ['error', { type: 'line-length' }],
+  'perfectionist/sort-union-types': ['error', { type: 'line-length' }],
+  'perfectionist/sort-object-types': ['error', { type: 'line-length' }],
+  'perfectionist/sort-array-includes': ['error', { type: 'line-length' }],
+  'perfectionist/sort-intersection-types': ['error', { type: 'line-length' }],
   'perfectionist/sort-imports': [
     'error',
-    {
-      // defaults to alphabetical asc
-      groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
-    },
+    { groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'] },
   ],
 }
 
@@ -97,12 +86,8 @@ const configs = [
       ...reactRules,
       ...perfectRules,
     },
-    // plugins: { perfectionist: perfectPlugin },
     settings: {
       react: { version: 'detect' },
-      'import/parsers': {
-        '@typescript/eslint-parser': ['.ts', '.tsx'],
-      },
     },
   },
 ]
