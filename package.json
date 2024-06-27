@@ -1,6 +1,6 @@
 {
   "name": "@crcarrick/eslint-config",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An eslint config",
   "repository": "https://github.com/crcarrick/eslint-config.git",
   "author": {
@@ -11,23 +11,29 @@
     "eslint",
     "eslintconfig"
   ],
-  "main": "index.js",
+  "main": "index.mjs",
   "devDependencies": {
-    "@eslint-community/eslint-plugin-eslint-comments": "^4.1.0",
-    "@typescript-eslint/eslint-plugin": "^6.20.0",
-    "@typescript-eslint/parser": "^6.20.0",
-    "eslint": "^8.56.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.5.0",
+    "@types/eslint__js": "^8.42.3",
+    "@types/node": "^20.14.9",
+    "eslint": "^9.5.0",
+    "eslint-plugin-import-x": "^0.5.2",
+    "eslint-plugin-react": "^7.34.3",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "typescript": "^5.5.2",
+    "typescript-eslint": "^7.14.1"
   },
   "peerDependencies": {
-    "@eslint-community/eslint-plugin-eslint-comments": "^4.1.0",
-    "@typescript-eslint/eslint-plugin": "^6.20.0",
-    "@typescript-eslint/parser": "^6.20.0",
-    "eslint": "^8.56.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.5.0",
+    "@types/eslint__js": "^8.42.3",
+    "@types/node": "^20.14.9",
+    "eslint": "^9.5.0",
+    "eslint-plugin-import-x": "^0.5.2",
+    "eslint-plugin-react": "^7.34.3",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "typescript": "^5.5.2",
+    "typescript-eslint": "^7.14.1"
   }
 }
