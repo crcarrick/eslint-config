@@ -12,6 +12,7 @@
     "eslintconfig"
   ],
   "main": "index.mjs",
+  "packageManager": "pnpm@9.4.0",
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.5.0",
