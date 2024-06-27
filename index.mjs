@@ -2,6 +2,7 @@
 
 /**
  * @typedef {import('eslint').Linter.FlatConfig} FlatConfig
+ * @typedef {import('eslint').Linter.RuleEntry} RuleEntry
  * @typedef {import('eslint').Linter.RulesRecord} RulesRecord
  */
 
@@ -11,17 +12,16 @@ import jslint from '@eslint/js'
 import tslint from 'typescript-eslint'
 import reactPlugin from 'eslint-plugin-react'
 import hooksPlugin from 'eslint-plugin-react-hooks'
-import imprtPlugin from 'eslint-plugin-import-x'
+import perfectPlugin from 'eslint-plugin-perfectionist'
 
 const compat = new FlatCompat()
 
 /** @type {FlatConfig[]} */
 const plugins = [
+  perfectPlugin,
   ...compat.config(reactPlugin.configs.recommended),
   // @ts-ignore
   ...compat.config(hooksPlugin.configs.recommended),
-  ...compat.config(imprtPlugin.configs.recommended),
-  ...compat.config(imprtPlugin.configs.typescript),
 ]
 
 /** @type {RulesRecord} */
@@ -59,14 +59,31 @@ const reactRules = {
   'react/react-in-jsx-scope': 'off',
 }
 
+/** @type {RuleEntry} */
+const lineLength = ['error', { type: 'line-length', order: 'desc' }]
+/** @type {RuleEntry} */
+const alphabetize = ['error', { type: 'alphabetize', order: 'asc' }]
+
 /** @type {RulesRecord} */
-const importRules = {
-  'import-x/order': [
+const perfectRules = {
+  'perfectionist/sort-maps': lineLength,
+  'perfectionist/sort-enums': lineLength,
+  'perfectionist/sort-classes': lineLength,
+  'perfectionist/sort-exports': alphabetize,
+  'perfectionist/sort-objects': lineLength,
+  'perfectionist/sort-jsx-props': lineLength,
+  'perfectionist/sort-interfaces': lineLength,
+  'perfectionist/sort-union-types': lineLength,
+  'perfectionist/sort-object-types': lineLength,
+  'perfectionist/sort-named-exports': alphabetize,
+  'perfectionist/sort-named-imports': alphabetize,
+  'perfectionist/sort-array-includes': lineLength,
+  'perfectionist/sort-intersection-types': lineLength,
+  'perfectionist/sort-imports': [
     'error',
     {
-      alphabetize: { order: 'asc' },
+      // defaults to alphabetical asc
       groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
-      'newlines-between': 'always',
     },
   ],
 }
@@ -78,8 +95,9 @@ const configs = [
       ...jsRules,
       ...tsRules,
       ...reactRules,
-      ...importRules,
+      ...perfectRules,
     },
+    // plugins: { perfectionist: perfectPlugin },
     settings: {
       react: { version: 'detect' },
       'import/parsers': {
@@ -91,7 +109,7 @@ const configs = [
 
 export default tslint.config(
   jslint.configs.recommended,
-  ...tslint.configs.recommendedTypeChecked,
+  ...tslint.configs.strictTypeChecked,
   ...plugins,
   ...configs,
 )
