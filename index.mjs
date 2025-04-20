@@ -1,27 +1,22 @@
 // @ts-check
 
 /**
- * @typedef {import('eslint').Linter.FlatConfig} FlatConfig
+ * @typedef {import('eslint').Linter.Config} Config
  * @typedef {import('eslint').Linter.RulesRecord} RulesRecord
  */
-
-import { FlatCompat } from '@eslint/eslintrc'
 
 import jslint from '@eslint/js'
 import tslint from 'typescript-eslint'
 import reactPlugin from 'eslint-plugin-react'
 import hooksPlugin from 'eslint-plugin-react-hooks'
-import perfectPlugin from 'eslint-plugin-perfectionist/configs/recommended-alphabetical'
+import perfectPlugin from 'eslint-plugin-perfectionist'
 
-const compat = new FlatCompat()
-
-/** @type {FlatConfig[]} */
+/** @type {Config[]} */
 const plugins = [
-  // @ts-ignore
-  perfectPlugin,
-  ...compat.config(reactPlugin.configs.recommended),
-  // @ts-ignore
-  ...compat.config(hooksPlugin.configs.recommended),
+  reactPlugin.configs.flat.recommended,
+  reactPlugin.configs.flat['jsx-runtime'],
+  hooksPlugin.configs['recommended-latest'],
+  perfectPlugin.configs['recommended-alphabetical'],
 ]
 
 /** @type {RulesRecord} */
@@ -77,7 +72,7 @@ const perfectRules = {
   ],
 }
 
-/** @type {FlatConfig[]}*/
+/** @type {Config[]}*/
 const configs = [
   {
     rules: {
