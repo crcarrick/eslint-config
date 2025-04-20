@@ -7,7 +7,6 @@
 
 import jslint from '@eslint/js'
 import tslint from 'typescript-eslint'
-import tsPlugin from '@typescript-eslint/eslint-plugin'
 import reactPlugin from 'eslint-plugin-react'
 import hooksPlugin from 'eslint-plugin-react-hooks'
 import perfectPlugin from 'eslint-plugin-perfectionist'
@@ -28,13 +27,7 @@ const jsRules = {
 
 /** @type {RulesRecord}*/
 const tsRules = {
-  '@typescript-eslint/ban-types': [
-    'error',
-    {
-      extendDefaults: true,
-      types: { '{}': false },
-    },
-  ],
+  '@typescript-eslint/no-empty-object-type': 'off',
   '@typescript-eslint/no-explicit-any': 'off',
   '@typescript-eslint/no-unused-vars': [
     'error',
@@ -81,10 +74,6 @@ const configs = [
       ...tsRules,
       ...reactRules,
       ...perfectRules,
-    },
-    plugins: {
-      // @ts-expect-error Plugin shape is valid, TS just doesn't like the generic shape
-      '@typescript-eslint': tsPlugin,
     },
     settings: {
       react: { version: 'detect' },
